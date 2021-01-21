@@ -8,7 +8,7 @@ const  httpOption = {
   headers: new HttpHeaders({
     'Contend-Type': 'application/json' //sirve para solicitud post, manda encabezados
   })
-}
+};
 
 @Injectable({
   providedIn: 'root'

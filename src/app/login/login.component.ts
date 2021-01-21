@@ -15,12 +15,14 @@ export class LoginComponent implements OnInit{
 public loginForm = this.formBuilder.group({
     email: ['', Validators.required],
     clave: ['',Validators.required]
-})
+}); 
 
-    constructor(public apiauth: ApiauthService, private router: Router, private formBuilder: FormBuilder){
-       /* if(this.apiauth.usuarioData){// esta validacion sirve para que cuando ya tengas una sesion iniciada no 
-            this.router.navigate(['/'])// te vasyas login , si no te redirige al home
-        }*/
+    constructor(public apiauthService: ApiauthService, 
+        private router: Router, 
+        private formBuilder: FormBuilder){
+        // if(this.apiauthService.usuarioData){// esta validacion sirve para que cuando ya tengas una sesion iniciada no 
+        //     this.router.navigate(['/'])// te vasyas login , si no te redirige al home
+        // }
     }
     ngOnInit(){
 
@@ -28,7 +30,7 @@ public loginForm = this.formBuilder.group({
     //meotod login va a ejecutar el servio apiauth.service.ts
     login(){
         console.log(this.loginForm.value)
-        this.apiauth.login(this.loginForm.value).subscribe(response => {
+        this.apiauthService.login(this.loginForm.value).subscribe(response => {
             if(response.exito===1){
                 this.router.navigate(['/']); 
             }

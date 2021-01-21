@@ -5,6 +5,7 @@ import { Response } from '../models/response';
 import { Usuario } from '../models/usuario';
 import { map } from 'rxjs/operators'; 
 import { Login } from '../models/login';
+
 const  httpOption = {
     headers: new HttpHeaders({
       'Contend-Type': 'application/json' //sirve para solicitud post, manda encabezados
@@ -32,7 +33,6 @@ export class ApiauthService{
     //metodo login el cual va a resivir el email y el password -- localstorage
     login(login: Login): Observable<Response>{
         return this._http.post<Response>(this.url, login, httpOption).pipe(
-            //ejecutar funciones
             map(res => {
                 if(res.exito===1){
                     const usuario: Usuario = res.data; 
